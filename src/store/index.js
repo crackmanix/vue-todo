@@ -15,6 +15,15 @@ export default new Vuex.Store({
     getTask: state => state.task
   },
   actions: {
+    setTodoListId(state, todolistId){
+      state.todoListId = todolistId;
+    },
+    setTasks(state, tasks){
+      state.tasks = tasks;
+    },
+    setTask(state, task){
+      state.task = task;
+    }
   },
   modules: {
   }
