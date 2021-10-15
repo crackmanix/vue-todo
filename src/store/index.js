@@ -9,12 +9,12 @@ export default new Vuex.Store({
     tasks: [],
     task: {}
   },
-  mutations: {
+  getters: {
     getTodoListId: state => state.todoListId,
     getTasks: state => state.tasks,
     getTask: state => state.task
   },
-  actions: {
+  mutations: {
     setTodoListId(state, todolistId){
       state.todoListId = todolistId;
     },
@@ -25,6 +25,6 @@ export default new Vuex.Store({
       state.task = task;
     }
   },
-  modules: {
+  actions: {
   }
 })
