@@ -1,14 +1,14 @@
 <template>
-  <b-modal id="taskModal" v-model="modalShow">
+  <b-modal :id="getModalId" v-model="modalShow">
     <template v-slot:modal-title>
-      Tâche N°{{taskId}}
+      Tâche N°{{task.id}}
     </template>
     <b-container fluid>
       <b-row>
         <b-col>
           <label for="titre">Titre de la tâche</label>
           <b-form-input id="titre"
-                        v-model="taskTitle"
+                        v-model="task.title"
                         placeholder="Acheter des pâtes ...">
           </b-form-input>
         </b-col>
@@ -17,7 +17,7 @@
         <b-col>
           <label for="description">Description de la tâche</label>
           <b-form-textarea id="description"
-                           v-model="taskDescription"
+                           v-model="task.description"
                            placeholder="Acheter des linguines et de la sauce carbonara."
                            rows="3"
                            max-rows="6">
@@ -28,9 +28,11 @@
         <b-col>
           <label for="etat">Tâche accomplie ?</label>
           <b-form-checkbox id="etat"
-                           v-model="taskCompleted"
+                           v-model="task.completed"
                            :value="true"
-                           :unchecked-value="false">
+                           :unchecked-value="false"
+                           switch
+                           size="lg">
           </b-form-checkbox>
         </b-col>
       </b-row>
@@ -52,20 +54,17 @@ export default {
   props: ['task'],
   data() {
     return {
-      modalShow: false,
-      taskTitle: this.task.taskTitle,
-      taskDescription: this.task.description,
-      taskCompleted: this.task.completed
+      modalShow: false
     }
   },
-  computed: {
-    taskId() {
-      return 'modal-' + this.task.taskId;
+  computed:{
+    getModalId(){
+      return 'taskModal' + this.task.id;
     }
   },
   methods: {
     hideModal() {
-      this.$refs['taskModal'].hide();
+      this.$refs[this.getModalId].hide();
     }
   }
 }
