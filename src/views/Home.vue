@@ -2,7 +2,7 @@
   <b-container fluid>
     <b-row>
       <b-col class="text-center">
-        <Top/>
+        <top/>
       </b-col>
     </b-row>
     <b-row>
